@@ -8,7 +8,7 @@ const app = express();
 
 // ✅ CORS FIX (IMPORTANT)
 app.use(cors({
-  origin: ["http://localhost:5173"], // abhi local ke liye
+  origin: ["https://hacker-stories-mu.vercel.app"], // abhi local ke liye
   methods: ["GET", "POST", "PUT", "DELETE"],
   allowedHeaders: ["Content-Type", "Authorization"]
 }));
