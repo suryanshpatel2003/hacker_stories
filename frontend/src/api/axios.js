@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const API = axios.create({
-  baseURL: "http://localhost:5000/api",
+  baseURL: "https://hacker-stories-o0w5.onrender.com/api",
 });
 
 // token attach
