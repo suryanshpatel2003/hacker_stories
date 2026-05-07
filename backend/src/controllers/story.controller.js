@@ -14,7 +14,7 @@ export const getStories = async (req, res) => {
   res.json(stories);
 };
 
-// GET single story
+// GET single storyy
 export const getStoryById = async (req, res) => {
   const story = await Story.findById(req.params.id);
   res.json(story);
