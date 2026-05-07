@@ -6,8 +6,9 @@ import {
   ArrowLeft, 
   BookmarkCheck, 
   Search, 
-  Ghost,
-  Loader2
+  Inbox,
+  Loader2,
+  Sparkles
 } from "lucide-react";
 
 const Bookmarks = () => {
@@ -31,84 +32,90 @@ const Bookmarks = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-[#f8fafc] text-slate-900">
+    <div className="min-h-screen bg-white text-slate-900 font-sans">
       
-      {/* 🏙️ GLASS NAVBAR */}
-      <nav className="sticky top-0 z-50 backdrop-blur-xl bg-white/80 border-b border-slate-200/60">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between h-16 items-center">
+      {/* 🏙️ MINIMALIST NAVIGATION */}
+      <nav className="sticky top-0 z-50 bg-white/70 backdrop-blur-md border-b border-slate-100">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="flex justify-between h-20 items-center">
             
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-4">
               <Link
                 to="/"
-                className="p-2 -ml-2 text-slate-500 hover:text-indigo-600 hover:bg-indigo-50 rounded-full transition-all"
-                title="Go Back"
+                className="group flex items-center gap-2 text-slate-500 hover:text-slate-900 transition-all"
               >
-                <ArrowLeft size={22} />
+                <div className="p-2 rounded-full group-hover:bg-slate-100 transition-colors">
+                  <ArrowLeft size={20} />
+                </div>
+                <span className="text-sm font-bold tracking-tight">Back to Feed</span>
               </Link>
-              <h1 className="text-xl font-bold text-slate-800 flex items-center gap-2">
-                <BookmarkCheck className="text-indigo-600" size={24} />
-                My Collection
-              </h1>
             </div>
 
-            <div className="hidden sm:block">
-               <span className="text-xs font-semibold bg-indigo-50 text-indigo-600 px-3 py-1 rounded-full border border-indigo-100">
-                 {stories.length} SAVED STORIES
-               </span>
+            <div className="flex items-center gap-2">
+               <div className="hidden sm:flex items-center gap-2 px-4 py-1.5 bg-slate-50 rounded-full border border-slate-100">
+                  <Sparkles size={14} className="text-indigo-500" />
+                  <span className="text-[11px] font-black uppercase tracking-tighter text-slate-600">
+                    {stories.length} Curated Stories
+                  </span>
+               </div>
             </div>
           </div>
         </div>
       </nav>
 
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+      <main className="max-w-7xl mx-auto px-6 py-12">
         
-        {/* ✨ TITLE SECTION */}
-        <div className="mb-8">
-          <h2 className="text-3xl font-extrabold text-slate-900 tracking-tight">
-            Saved for Later
-          </h2>
-          <p className="text-slate-500 mt-1">
-            Access all your hand-picked hacker news stories in one place.
+        {/* ✨ PAGE HEADER */}
+        <div className="max-w-2xl mb-12">
+          <div className="flex items-center gap-3 mb-4">
+            <div className="p-3 bg-indigo-600 rounded-2xl shadow-lg shadow-indigo-100">
+              <BookmarkCheck size={28} className="text-white" />
+            </div>
+            <h2 className="text-4xl font-black text-slate-900 tracking-tight">
+              My Collection
+            </h2>
+          </div>
+          <p className="text-lg text-slate-500 leading-relaxed">
+            Your personal archive of the most interesting tech insights and hacker news. 
+            Saved to read when you have the time.
           </p>
         </div>
 
         {/* 🔄 LOADING STATE */}
         {loading ? (
-          <div className="flex flex-col items-center justify-center min-h-[50vh]">
-            <Loader2 className="w-10 h-10 text-indigo-600 animate-spin mb-4" />
-            <p className="text-slate-500 font-medium animate-pulse">Syncing your bookmarks...</p>
+          <div className="flex flex-col items-center justify-center py-32">
+            <Loader2 className="w-12 h-12 text-slate-200 animate-spin mb-4" />
+            <p className="text-slate-400 font-bold uppercase tracking-widest text-xs">Accessing Vault...</p>
           </div>
         ) : stories.length === 0 ? (
           
-          /* 👻 EMPTY STATE - Jab koi bookmark na ho */
-          <div className="flex flex-col items-center justify-center py-20 bg-white border-2 border-dashed border-slate-200 rounded-3xl">
-            <div className="bg-slate-50 p-6 rounded-full mb-6">
-              <Ghost size={60} className="text-slate-300" />
+          /* 👻 CLASSY EMPTY STATE */
+          <div className="flex flex-col items-center justify-center py-24 bg-slate-50/50 border border-slate-100 rounded-[3rem] px-6">
+            <div className="w-20 h-20 bg-white rounded-3xl shadow-sm flex items-center justify-center mb-6">
+              <Inbox size={40} className="text-slate-200" />
             </div>
-            <h3 className="text-xl font-bold text-slate-800">It's quiet in here...</h3>
-            <p className="text-slate-500 mt-2 mb-8 text-center max-w-xs">
-              Looks like you haven't saved any interesting stories yet.
+            <h3 className="text-2xl font-bold text-slate-800">Your collection is empty</h3>
+            <p className="text-slate-500 mt-2 mb-10 text-center max-w-sm">
+              Explore the latest stories on the main feed and bookmark them to see them here.
             </p>
             <Link
               to="/"
-              className="inline-flex items-center gap-2 bg-indigo-600 text-white px-6 py-3 rounded-xl font-semibold shadow-lg shadow-indigo-200 hover:bg-indigo-700 hover:-translate-y-0.5 transition-all"
+              className="inline-flex items-center gap-3 bg-slate-900 text-white px-8 py-4 rounded-2xl font-bold hover:bg-indigo-600 transition-all active:scale-95 shadow-xl shadow-slate-200"
             >
               <Search size={18} />
-              Explore Stories
+              Start Discovering
             </Link>
           </div>
 
         ) : (
           
           /* 📱 GRID CONTENT */
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {stories.map((story) => (
               <div
                 key={story._id}
-                className="group relative transform transition-all duration-300 hover:-translate-y-1"
+                className="group relative transition-all duration-300"
               >
-                {/* StoryCard handles the internal design */}
                 <StoryCard
                   story={story}
                   refresh={fetchBookmarks}
@@ -118,14 +125,19 @@ const Bookmarks = () => {
             ))}
           </div>
         )}
+
+        {/* 📢 FOOTER INFO */}
+        {!loading && stories.length > 0 && (
+          <div className="mt-20 pt-10 border-t border-slate-100 flex flex-col items-center">
+            <div className="text-slate-300 mb-2">
+               <BookmarkCheck size={20} />
+            </div>
+            <p className="text-slate-400 text-xs font-bold uppercase tracking-widest">
+              End of Collection
+            </p>
+          </div>
+        )}
       </main>
-      
-      {/* 📢 FOOTER TIP */}
-      {!loading && stories.length > 0 && (
-        <p className="text-center text-slate-400 text-sm py-10">
-          Tip: You can un-bookmark stories by clicking the star icon again.
-        </p>
-      )}
     </div>
   );
 };
