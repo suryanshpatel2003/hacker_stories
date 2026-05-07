@@ -1,6 +1,12 @@
 # 🚀 Hacker News Full Stack App (DACBY Assignment)
 
-A full-stack MERN application that fetches top stories from Hacker News, allows users to authenticate, and bookmark their favorite stories.
+A production-ready full-stack MERN application that fetches top stories from Hacker News, supports user authentication, and allows bookmarking with persistent storage.
+
+---
+
+## 🌐 Live Repository
+
+👉 https://github.com/suryanshpatel2003/hacker_stories
 
 ---
 
@@ -8,31 +14,41 @@ A full-stack MERN application that fetches top stories from Hacker News, allows 
 
 ### 🔐 Authentication
 
-* User Registration & Login (JWT based)
-* Protected routes
+* User Registration & Login (JWT-based authentication)
+* Secure password hashing using bcrypt
+* Protected routes for authenticated users
 
 ### 📰 Stories
 
 * Fetch top 10 stories from Hacker News API
-* Display title, points, author, and posted time
-* Open story link in new tab
+* Display:
+
+  * Title
+  * Points (score)
+  * Author
+  * Posted time
+* Open story links in a new tab
 
 ### ⭐ Bookmark System
 
 * Bookmark / Unbookmark stories
 * Persistent storage in MongoDB
-* Dedicated "My Bookmarks" page
+* Dedicated **"My Bookmarks"** page
+* Dynamic UI reflecting bookmark state
 
-### 🔄 Auto Refresh
+### 🔄 Auto Refresh System
 
-* Stories auto-refresh every 10 minutes (cron job)
-* Manual refresh button available in UI
+* Automatic story refresh every **10 minutes** (via cron job)
+* Manual refresh button in UI
+* Real-time data sync with backend
 
 ### 🎨 UI/UX
 
-* Clean modern UI with Tailwind CSS
-* Responsive design
-* Loading states & animations
+* Modern responsive UI using Tailwind CSS
+* Clean card-based layout
+* Loading states & skeleton UI
+* Interactive hover effects
+* Mobile-friendly design
 
 ---
 
@@ -50,21 +66,21 @@ A full-stack MERN application that fetches top stories from Hacker News, allows 
 
 * Node.js
 * Express.js
-* MongoDB (Atlas)
+* MongoDB Atlas
 * Mongoose
 * JWT Authentication
 * bcryptjs
-* node-cron
+* node-cron (for scheduling)
 
 ---
 
 ## ⚙️ Installation & Setup
 
-### 1️⃣ Clone the repository
+### 1️⃣ Clone the Repository
 
 ```bash
-git clone https://github.com/yourusername/dacby-assignment.git
-cd dacby-assignment
+git clone https://github.com/suryanshpatel2003/hacker_stories.git
+cd hacker_stories
 ```
 
 ---
@@ -76,7 +92,7 @@ cd backend
 npm install
 ```
 
-Create `.env` file:
+Create a `.env` file:
 
 ```env
 PORT=5000
@@ -84,7 +100,7 @@ MONGO_URI=your_mongodb_connection_string
 JWT_SECRET=your_secret_key
 ```
 
-Run backend:
+Run backend server:
 
 ```bash
 npm run dev
@@ -110,12 +126,12 @@ http://localhost:5173
 
 ## 🔌 API Endpoints
 
-### Auth
+### 🔐 Authentication
 
 * `POST /api/auth/register`
 * `POST /api/auth/login`
 
-### Stories
+### 📰 Stories
 
 * `GET /api/stories`
 * `GET /api/stories/:id`
@@ -128,10 +144,10 @@ http://localhost:5173
 ## 🧠 Architecture Overview
 
 * Backend fetches data from Hacker News API
-* Stores stories in MongoDB
-* Uses JWT for authentication
-* Frontend consumes APIs using Axios
-* Bookmark system uses user-story relation
+* Stores stories in MongoDB for performance
+* JWT used for secure authentication
+* Bookmark system implemented using user-story relationships
+* Frontend consumes APIs via Axios and manages state using Context API
 
 ---
 
@@ -145,26 +161,26 @@ http://localhost:5173
 
 ## 🎥 Loom Video
 
-(Explain project architecture, features, and code walkthrough here)
+(Add your Loom walkthrough video link here)
 
 ---
 
 ## 📌 Future Improvements
 
-* Pagination support
-* Search & filters
+* Pagination & infinite scroll
+* Search and filtering options
 * Bookmark sync indicator
-* Better error handling
-* Dark mode
+* Advanced error handling
+* Dark mode support
 
 ---
 
 ## 👨‍💻 Author
 
-Suryansh
+**Suryansh Patel**
 
 ---
 
 ## ⭐ Notes
 
-This project was built as part of a full-stack developer assignment and demonstrates real-world MERN stack implementation.
+This project was developed as part of a Full Stack Developer assignment and demonstrates real-world MERN stack architecture, API design, authentication, and UI implementation.
